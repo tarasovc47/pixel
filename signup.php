@@ -16,7 +16,7 @@ if (isset($_POST['submit']))
     }
 
     $link = new DB();// создаём экземпляр класса БД
-    $query = mysqli_query($link->link(), "SELECT id FROM users WHERE login='".mysqli_real_escape_string($link->link(), $_POST['login'])."'"); // запрос в базе такого логина
+    $query = mysqli_query($link->connect(), "SELECT id FROM users WHERE login='".mysqli_real_escape_string($link->connect(), $_POST['login'])."'"); // запрос в базе такого логина
     if(mysqli_num_rows($query) > 0) // если вернулась хоть одна строка
     {
         $errors[] = "Пользователь с таким логином уже существует в базе данных";
@@ -28,7 +28,7 @@ if (isset($_POST['submit']))
         $password = sha1(md5(trim($_POST['password']))); //пароль хешируем
         $name = $_POST['name'];
         $surname = $_POST['surname'];
-        mysqli_query($link->link(),"INSERT INTO users SET login='" . $login . "', password='" . $password . "', name='" . $name . "', surname='" . $surname . "'"); // и передаём всё в БД
+        mysqli_query($link->connect(),"INSERT INTO users SET login='" . $login . "', password='" . $password . "', name='" . $name . "', surname='" . $surname . "'"); // и передаём всё в БД
         header("Location: signin.php"); // перенаправляем на страницу входа
         exit();
     }

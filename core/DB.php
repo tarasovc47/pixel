@@ -12,8 +12,19 @@ class DB
         PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
      */
-
-    public function link() // функция коннекта к БД
+    
+    private $connect_state = null;
+    
+    public function connect()
+    {
+        if ($this->connect_state == null)
+        {
+            $this->connect_state = $this->link();
+        }
+        return $this->connect_state;
+    }
+    
+    private function link() // функция коннекта к БД
     {
         return mysqli_connect("127.0.0.1", "root", "root", "pixel");
     }

@@ -23,7 +23,7 @@ if (empty($_COOKIE)) // если куки пустые то отправляем
 else // если куки не пустые
 {
     $link = new DB(); //идём в базу
-    $query = mysqli_query($link->link(), "SELECT id, login, name, surname FROM users WHERE id = '" . $_COOKIE['id'] . "' AND session_hash='" . $_COOKIE['hash'] . "' LIMIT 1" ); // и запрашиваем совпадающие строки
+    $query = mysqli_query($link->connect(), "SELECT id, login, name, surname FROM users WHERE id = '" . $_COOKIE['id'] . "' AND session_hash='" . $_COOKIE['hash'] . "' LIMIT 1" ); // и запрашиваем совпадающие строки
     $data = mysqli_fetch_assoc($query);
     ?>
     Привет, <?= $data['name'] ?>

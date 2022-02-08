@@ -5,7 +5,7 @@ $link = new DB();
 
 if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
 {
-    $query = mysqli_query($link->link(), "SELECT * FROM users WHERE id = '" . intval($_COOKIE['id']) . "' LIMIT 1");
+    $query = mysqli_query($link->connect(), "SELECT * FROM users WHERE id = '" . intval($_COOKIE['id']) . "' LIMIT 1");
     $userdata = mysqli_fetch_assoc($query);
 
     if ($userdata['session_hash'] !== $_COOKIE['hash'] or $userdata['id'] !== $_COOKIE['id'])

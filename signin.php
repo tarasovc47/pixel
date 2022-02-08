@@ -7,13 +7,13 @@ $link = new DB();
 
 if (isset($_POST['submit']))
 {
-    $query = mysqli_query($link->link(),"SELECT id, password FROM users WHERE login='" . mysqli_real_escape_string($link->link(),$_POST['login']) . "' LIMIT 1"); // обращаемся в базу, запрашивая данные из $_POST
+    $query = mysqli_query($link->connect(),"SELECT id, password FROM users WHERE login='" . mysqli_real_escape_string($link->connect(),$_POST['login']) . "' LIMIT 1"); // обращаемся в базу, запрашивая данные из $_POST
     $data = mysqli_fetch_assoc($query);
 
     if ($data['password'] === sha1(md5($_POST['password']))) // если пароли совпадают
     {
         $user_hash = $hash->generate(8); // генерируем хеш
-        mysqli_query($link->link(), "UPDATE users SET session_hash='" . $user_hash . "' WHERE id='" . $data['id'] . "'"); //заносим его в бд
+        mysqli_query($link->connect(), "UPDATE users SET session_hash='" . $user_hash . "' WHERE id='" . $data['id'] . "'"); //заносим его в бд
         setcookie('id', $data['id'], time()+60*60*24, '/'); // и генерируем куки
         setcookie('hash', $user_hash, time()+60*60*24, '/');
         header("Location: check.php"); exit(); // перенаправляем на check.php
