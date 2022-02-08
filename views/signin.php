@@ -1,7 +1,7 @@
 <?php
 
-require "core/DB.php"; // подключаем класс с БД
-require "core/Cookie.php"; // подключаем класс для генерации хешей
+require "../core/DB.php"; // подключаем класс с БД
+require "../core/Cookie.php"; // подключаем класс для генерации хешей
 $hash = new Cookie(); //создаём экземпляры классов
 $link = new DB();
 

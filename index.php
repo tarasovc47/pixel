@@ -16,8 +16,8 @@ require "core/DB.php"; //подключаем класс с БД
 if (empty($_COOKIE)) // если куки пустые то отправляем на логин или регистрацию
 {
     ?>
-    <a href="signin.php">Войти</a><br>
-    <a href="signup.php">Зарегистрироваться</a>
+    <a href="views/signin.php">Войти</a><br>
+    <a href="views/signup.php">Зарегистрироваться</a>
     <?php
     }
 else // если куки не пустые
@@ -43,7 +43,7 @@ else // если куки не пустые
         </tr>
         </thead>
     </table>
-    <a href="logout.php">Выйти</a>
+    <a href="views/logout.php">Выйти</a>
     <a href="/">На главную</a>
     <?php
 }

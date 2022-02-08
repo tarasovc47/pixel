@@ -1,6 +1,6 @@
 <?php
 
-require "core/DB.php";
+require "../core/DB.php";
 $link = new DB();
 
 if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
@@ -16,7 +16,7 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
     }
     else
     {
-        header('Location: index.php');
+        header('Location: /');
     }
 }
 else

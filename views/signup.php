@@ -1,6 +1,6 @@
 <?php
 
-require "core/DB.php"; // подключаем класс с БД
+require "../core/DB.php"; // подключаем класс с БД
 
 if (isset($_POST['submit']))
 {
